@@ -15,9 +15,9 @@ console.log(isPrime(5));
 ///write a recursive function to print numbers from 1 to n
 
 function printNumbers(n, current = 1) {
-    if (current > n) return; // Base case: stop when current exceeds n
+    if (current > n) return; 
     console.log(current);
-    printNumbers(n, current + 1); // Recursive call with incremented value
+    printNumbers(n, current + 1); 
 }
 
 printNumbers(5);
