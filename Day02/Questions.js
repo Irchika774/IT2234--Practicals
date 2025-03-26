@@ -37,7 +37,7 @@ let arrayNew = [4,8,3,4,3,2,1,8,4]
  arrayNew.forEach((n)=>{
 	 arrayNew.forEach((k)=>{
 		 if(n==k)
-			count=+1
+			count+=1
 	 })
 	 if (count>frequent)
 	 {
