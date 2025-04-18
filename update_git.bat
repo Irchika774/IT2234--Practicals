@@ -1,7 +1,9 @@
 @echo off
-cd C:\Users\Warushi\Documents\IT2234--Practicals
+cd C:\Users\Warushi\Desktop\VLE\2.2\IT2234--Practicals
+git init
+git remote add origin https://github.com/Irchika774/IT2234--Practicals.git
+git pull origin master
 git add .
-git commit -m "Daily practical update"
-git push origin main
-echo Update completed!
+git commit -m "First commit using batch file"
+git push -u origin master
 pause
