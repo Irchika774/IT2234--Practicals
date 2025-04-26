@@ -1,0 +1,85 @@
+db.goods.insertMany([
+  {
+    itemId: "F001",
+    name: "Cotton Fabric",
+    category: "Fabric",
+    color: "White",
+    quantity: 50,
+    unit: "meters",
+    pricePerUnit: 450.00
+  },
+  {
+    itemId: "F002",
+    name: "Silk Fabric",
+    category: "Fabric",
+    color: "Red",
+    quantity: 30,
+    unit: "meters",
+    pricePerUnit: 1200.00
+  },
+  {
+    itemId: "T001",
+    name: "Thread Spool",
+    category: "Thread",
+    color: "Black",
+    quantity: 100,
+    unit: "spools",
+    pricePerUnit: 80.00
+  },
+  {
+    itemId: "B001",
+    name: "Shirt Button",
+    category: "Button",
+    color: "Transparent",
+    quantity: 300,
+    unit: "pieces",
+    pricePerUnit: 3.00
+  },
+  {
+    itemId: "A001",
+    name: "Measuring Tape",
+    category: "Accessory",
+    quantity: 10,
+    unit: "pieces",
+    pricePerUnit: 150.00
+  }
+])
+
+
+1.Find all items in the category "Fabric"
+
+db.goods.find({ category: "Fabric" })
+
+2.Find all goods that are red in color
+
+db.goods.find({ color: "Red" })
+
+3.Find all items that cost more than 100 LKR per unit
+
+db.goods.find({ pricePerUnit: { $gt: 100 } })
+
+4.List all items sorted by price (lowest to highest)
+  
+db.goods.find().sort({ pricePerUnit: 1 })
+
+5.List all fabrics sorted by quantity in descending order
+
+db.goods.find({ category: "Fabric" }).sort({ quantity: -1 })
+
+6.Find items that are either white or black in color
+ db.goods.find({ color: { $in: ["White", "Black"] } })
+
+7.Find items that are not fabric
+db.goods.find({ category: { $ne: "Fabric" } })
+
+8.Find goods that are not red and cost less than 500 LKR
+  db.goods.find({ $and: [ { color: { $ne: "Red" } }, { pricePerUnit: { $lt: 500 } } ] })
+
+9.Increase quantity of "Cotton Fabric" by 10 meters
+
+ db.goods.updateOne({ name: "Cotton Fabric" }, { $inc: { quantity: 10 } })
+
+10.Delete all items with quantity less than 20
+   db.goods.deleteMany({ quantity: { $lt: 20 } })
+11.Delete the item "Shirt Button"
+   db.goods.deleteOne({ name: "Shirt Button" })
