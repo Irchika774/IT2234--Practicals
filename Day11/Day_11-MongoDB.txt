@@ -1,0 +1,76 @@
+// Insert a single student document
+db.students.insertOne({
+  "regno": "2021IT001",
+  "name": "Kolins",
+  "age": 25,
+  "degree": "IT",
+  "gpa": 3.2,
+  "gender": "Male",
+  "skills": [
+    "Java",
+    "MatLap",
+    "MySQL"
+  ]
+});
+
+// Insert multiple student documents
+db.students.insertMany([
+  {
+    "regno": "2021IT004",
+    "name": "Kamal",
+    "age": 25,
+    "degree": "CSC",
+    "gpa": 3.2,
+    "gender": "Male",
+    "skills": [
+      "Java",
+      "MatLap",
+      "MySQL"
+    ]
+  },
+  {
+    "regno": "2021IT005",
+    "name": "Mathavi",
+    "age": 25,
+    "degree": "IT",
+    "gpa": 3.2,
+    "gender": "Female",
+    "skills": [
+      "Java",
+      "MatLap",
+      "python"
+    ]
+  }
+]);
+
+// Find all female students
+db.students.find({ "gender": "Female" });
+
+/* 
+Find all students whose age is greater than 25
+$gt = greater than
+*/
+db.students.find({ age: { $gt: 25 } });
+
+/* 
+Find all students who have either "Java" or "MatLap" as a skill
+$in = matches any value in the given array
+*/
+db.students.find({ skills: { $in: ["Java", "MatLap"] } });
+
+/*
+Find all IT students and sort them by GPA in ascending order 
+1 = ascending order
+*/
+db.students.find({ 'degree': 'IT' }).sort({ 'gpa': 1 });
+
+/*
+Find female students in IT degree and sort by GPA in ascending order
+*/
+db.students.find({ 'degree': 'IT', 'gender': 'Female' }).sort({ 'gpa': 1 });
+
+/*
+Sort all students by GPA in descending order and by name in ascending order
+-1 = descending order, 1 = ascending order
+*/
+db.students.find().sort({ gpa: -1, name: 1 });
